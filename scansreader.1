@@ -1,0 +1,187 @@
+.\" @(#)scansreader.1		-*- nroff -*-
+.de EX
+.ne 5
+.if n .sp .5
+.if t .sp .5
+.nf
+..
+.de EE
+.fi
+.if n .sp .5
+.if t .sp .5
+..
+.TH scansreader 1 "16 Feb 2005" "scansreader version 1.13" "X Tools"
+.SH NAME
+scansreader \- a fast scanned images viewer for X.
+.SH SYNOPSIS
+.B scansreader
+[options] [file | directory | archive ]
+.SH DESCRIPTION
+.I scansreader
+is X reader specially crafted for reading comfortably images of scanned
+documents. It is based on the nice 
+Quick Image Viewer (qiv), v1.8  by Adam Kopacz
+http://www.klografx.net/qiv/
+an image viewer developed with gdk/imlib.
+
+Scansreader differs from QIV as its default mode is geared to do "what is
+right" to read pages of text in fullscreen mode, adapts itself automatically
+to the screen and document dimensions, has all functions modifying the images
+supressed to be sure to never damage your documents by mistake, have more
+ergnomic functions to provide a nice browsing (e.g. space moves down, then go
+to next page, just moving the mouse scrolls the page, ...). 
+
+Scansreader adopts a "less is more" approach, geared towards the sole reading
+of sequential images of scanned documents.
+
+Scansreader uses a "smart" case-insensitive numeric sort that attempts to sort
+filenames with numbers in a logical manner.  For instance: 2.jpg sorts before
+10.jpg; 1foo.jpg through 10foo.jpg sorts after 1bar.jpg through 15bar.jpg
+(because "foo" comes after "bar"); and baz0001.jpg through baz0010.jpg sorts
+after baz01.jpg through baz99.jpg (because the longer group of zero-padded
+digits indicates that they shouldn't be intermingled). (it is qiv options -M
+and -N).
+
+The argument can be:
+.TP
+.B A Directory
+All the images files in it are sorted and read, Does not recurse in subdirs
+.TP
+.B Nothing
+The current directory is read
+.TP
+.B A file 
+Its directory is read
+.TP
+.B An archive
+Its contents is read: understands extensions .cbz, .bdz, .zip, .jar for
+zip files (executes the external unzip command),
+and .cbr, bdr, .rar for rar files (executes the external rar command)
+
+When scroling down or up, when no more scroll is possible, a small yellow
+triangle is shown in the lower right or upper left corner to indicate the end
+of the scroll.
+
+
+.SH OPTIONS
+.TP
+.B \-h, \-\-help
+Print out a brief help message.
+.TP
+.B \-l, \-\-last_pos
+Continue reading the last image we were reading during the previous invocation
+of the program.
+.TP
+.B \-L fr, \-\-language=fr
+Uses a French online help.
+
+.SH LESS IMPORTANT OPTIONS
+.TP
+.B \-e, \-\-center
+Disable window centering.
+.TP
+.B \-w x, \-\-fixed_width x
+Window with fixed width x.
+.TP
+.B \-W x, \-\-fixed_zoom x
+Window with fixed zoom factor (percentage x).
+.TP
+.B \-m, \-\-maxpect
+Expand image(s) to fit screen size while preserving aspect ratio.
+.TP
+.B \-t, \-\-scale_down
+Shrink image(s) which are larger than screen size to fit.
+.TP
+.B \-b, \-\-brightness \fIx\fB
+Set brightness to \fIx\fR (-32..32).
+.TP
+.B \-c, \-\-contrast \fIx\fB
+Set contrast to \fIx\fR (-32..32).
+.TP
+.B \-g, \-\-gamma \fIx\fB
+Set gamma to \fIx\fR (-32..32).
+.TP
+.B \-n, \-\-no_filter
+Disable filtering of images by extension.
+.TP
+.B \-i, \-\-no_statusbar
+Disable statusbar.
+.TP
+.B \-I, \-\-statusbar
+Enable statusbar.
+.TP
+.B \-p, \-\-transparency
+Enable transparency for transparent images.
+.TP
+.B \-a, \-\-do_grab
+Grab the pointer in windowed mode.
+.TP
+.B \-v, \-\-version
+Print version information.
+.TP
+.B \-s, \-\-slide
+Start slideshow immediately.
+.TP
+.B \-S, \-\-shuffle
+Shuffle images (random order with next/previous functionality).
+.TP
+.B \-d, \-\-delay \fIx\fB
+Set slideshow delay to \fIx\fR seconds.
+.TP
+.B \-I, \-\-ignore_path_sort
+Sort all the image files by just their filename, ignoring the path.
+A
+.SH EXAMPLES
+scansreader
+.br
+scansreader \-l
+.br
+scansreader mycollection/volume1.cbz
+.SH MOUSE & KEYS CONTROLS
+.EX
+left/right mouse      next/previous picture
+wheel mouse           scroll up/down
+middle mouse          keys help + status
+space                 scroll down, then next picture,       
+backspace/right mouse previous picture
+PageDown / PageUp     5 pictures forward / backward
+left / right arrows   previous / next picture
+down / up arrows      scroll
+q / ESC / DEL         exit, saving position
+Q                     exit, no save 
+S                     save, but do not quit
+p / n                 previous / next saved position
+
+1,2,...,9,0        Go to image at 0, 10, 20, ..., 90, 100% of total
+                   Shown as pos in status (+ pages from there)
++, = / -           zoom in / out (10%)
+TAB, m             scale to screen size on/off
+s                  slide show on/off
+, / .              faster / slower slide show (def. 10s)
+b / B              - / + brightness
+c / C              - / + contrast
+g / G              - / + gamma
+h / v              flip horizontal / vertical
+k / l              rotate right / left
+jtX<return>        jump to image number X
+jfX<return>        jump forward X images
+jbX<return>        jump backward X images
+enter/return       reset zoom and color settings
+i                  statusbar on/off:
+                   | file name | page number | keys to get back there |
+?, shift or other  show keys
+EE
+.SH AUTHORS
+.EX
+Colas Nahaboo          http://colas.nahaboo.net
+And all the authors of QIV!
+.EE
+.SH MISC
+.P
+scansreader homepage: http://colas.nahaboo.net/scansreader/
+.P
+Sending a SIGUSR1 to scansreader will cause the program to flip to next picture. 
+SIGUSR2 will move to previous.
+.P
+This program is covered by the GNU GPL; see the file COPYING for
+details.

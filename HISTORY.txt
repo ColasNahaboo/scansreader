@@ -1,0 +1,97 @@
+[1.13] (b1.10) 2005-02-16  Colas Nahaboo  <http://colas.nahaboo.net>
+
+	* no more "random" option 
+	* TAB command to toggle between full width and full screen
+
+	* image.c (scansreader_load_image): prefetches next image
+
+2005-02-14  Colas Nahaboo  <http://colas.nahaboo.net>
+
+	* event.c (scansreader_handle_event): Q now quits without saving pos
+
+2005-02-13  Colas Nahaboo  <colas@aye.inria.fr>
+
+	* options.c: lib/ contents moved in main dir
+
+[1.12] 2005-02-13  Colas Nahaboo  <colas@aye.inria.fr> (build 1.12)
+
+	* utils.c: argument can be a zipped (.cbz or .bdz) or rar-ed
+	(.cbr or .bdr) archives of files, that will be uncompressed on
+	the fly
+
+	* build 1.8
+	* main.c: ~/.scansreader.last is not used anymore, everything is done in
+	the ~/.scansreader.log
+
+[1.11] 2004-05-09  Colas Nahaboo  <colas@aye.inria.fr>
+
+	* main.c: fix: previous/next position was broken in some cases
+
+[1.10] 2004-03-12 Colas Nahaboo  <colas@nahaboo.net>
+
+	* format of ~/.scansreader.log and ~/.scansreader.last files changed: one entry per
+	  line, tab-separated fields
+
+[1.9] 2003-12-07  Colas Nahaboo  <colas@aye.inria.fr>
+
+	* main.c: 'p' and 'n' navigate in history of last positions
+	  p ==> previous one, n ==> next one
+
+2003-12-05  Colas Nahaboo  <colas@aye.inria.fr>
+
+	* main.c: appends last positions to a ~/.scansreader.log
+
+2003-11-03  Colas Nahaboo  <colas@aye.inria.fr>
+
+	* event.c: scrolls vertically with mouse motions
+
+2003-11-02  Colas Nahaboo  <colas@aye.inria.fr>
+
+	* main.c (scansreader_handle_timer): the slide show mode now has a default
+	of 10s, and scolls down before going to next page
+	"," and "." makes this delay 1 second faster or slower
+
+	* main.h (helpstrs_fr): aide francaise: option -L fr
+
+	* image.c: help restructured. unknonw keys toggle help
+
+	* event.c: if image is not wider than screen, left & right arrows
+	go to next & previous images
+
+	* image.c (scansreader_load_image): always raise window on new load
+	when scolling, if try to move past top or bottom, show a little
+	indicator.
+
+	* main.c: saves last pos in ~/.scansreader.last on exit, as a file of 3
+	lines: pwd / file path / page index
+	Goes back to last save with -C on start
+
+	* Makefile (STATUSBAR_FONT): bigger font
+
+	* event.c (scansreader_handle_event): on some cygwin systems, an extra key
+	press & release event is generated after another, with same times
+	as the real release, so we ignore it
+
+2003-11-01  Colas Nahaboo  <colas@aye.inria.fr>
+
+	* image.c: display a "Loading ..." message on loding images
+
+2003-10-29  Colas Nahaboo  <colas@aye.inria.fr>
+
+	* event.c: better computation of scroll factor
+
+2003-07-02  Colas Nahaboo  <colas@aye.inria.fr>
+
+	* image.c (update_image): removed code for windowed mode
+
+	* event.c (scansreader_handle_event): unknown key => online help
+
+2003-07-01  Colas Nahaboo  <colas@aye.inria.fr>
+
+	* event.c: move by keys moves twice slower
+	(scansreader_handle_event): removed functions to set image as root
+
+	* image.c (setup_win): cursor is always blank
+
+	* Makefile: new ci target via fshar
+
