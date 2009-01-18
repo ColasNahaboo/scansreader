@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#define VERSION "1.13"
+#define VERSION "1.14"
 #define URL "http://colas.nahaboo.net/scansreader/"
 #define TRASH_DIR ".scansreader-trash"
 #define SLIDE_DELAY 3000 /* milliseconds */

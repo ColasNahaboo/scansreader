@@ -4,6 +4,7 @@ FILES
 README.txt
 QIV_README.CHANGES
 README.COPYING
+make-dist
 event.c
 image.c
 main.c

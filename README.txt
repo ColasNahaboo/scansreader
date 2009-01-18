@@ -28,8 +28,10 @@ The difference with QIV:
      
 SCANSREADER is meant to be used for browsing dirs of images in fullscreen mode.
 
-It needs the debian packages:  imlib-dev imlib gdk-imlib-dev, and the external
-programs "unzip" and "rar" to be able to open archives.
+It needs the debian packages: 
+   * woody: imlib-dev imlib gdk-imlib-dev, 
+   * sarge: imlib1-dev gdk-imlib1-dev
+and the external programs "unzip" and "rar" to be able to open archives.
 
 (*) qiv is at http://www.klografx.net/qiv/
 I added the following patch from scansreader-1.9-pre4:

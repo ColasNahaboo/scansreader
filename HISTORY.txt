@@ -1,3 +1,10 @@
+[1.14] 2006-03-05 Colas Nahaboo  <http://colas.nahaboo.net>
+	* nothing changed in the code, only the packaging:
+		- the .tgz includes now a directory
+		- compilation is now done on debian sarge (was woody)
+		- static executable is no longer included in distrib, but in
+		  a separate tgz for a faster download of the distrib
+
 [1.13] (b1.10) 2005-02-16  Colas Nahaboo  <http://colas.nahaboo.net>
 
 	* no more "random" option 

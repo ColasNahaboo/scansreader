@@ -78,7 +78,7 @@ $(PROGRAM): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(PROGRAM) $(LIBS)
 
 $(PROGRAM)-static: $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(PROGRAM)-static -static $(LIBS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(PROGRAM)-static -static $(LIBS) -lpthread
 
 $(OBJS): %.o: %.c $(HEADERS)
 	$(CC) -c $(CFLAGS) $(DEFINES) $(INCLUDES) $< -o $@
@@ -114,11 +114,7 @@ ci:
 	ci -l scansreader.shar </dev/null
 
 
-DISTDIR=/home/colas/www/lo/web-colas.nahaboo.net/software/scansreader
 dist:	all
-	rm -f *.o *-g *.g
-	tar cfz $(DISTDIR)/files/scansreader-`grep VERSION scansreader.h| sed -e 's/[^"]*"\([^"]*\)".*/\1/'`.tgz `cat FILES` $(PROGRAM) $(PROGRAM)-static
-	cp HISTORY.txt README.txt scansreader.html $(DISTDIR)
-	strip-mans scansreader.1 >$(DISTDIR)/scansreader-manual.txt
+	./make-dist
 
 # the end... ;-)
