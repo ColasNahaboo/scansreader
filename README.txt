@@ -31,6 +31,8 @@ SCANSREADER is meant to be used for browsing dirs of images in fullscreen mode.
 It needs the debian packages: 
    * woody: imlib-dev imlib gdk-imlib-dev, 
    * sarge: imlib1-dev gdk-imlib1-dev
+   * etch: libgtk1.2-dev libglib1.2-dev gdk-imlib11-dev
+
 and the external programs "unzip" and "rar" to be able to open archives.
 
 (*) qiv is at http://www.klografx.net/qiv/
@@ -52,9 +54,14 @@ of 3 fields, tab-separated: directory image_name index
 
 
 TODO:
+   * see if can merge with comix (or comical?)
+   * have a better resize (with antialias)
+   * use unrar instead of rar. option to use unrar-free
+     (try to use in order: unrar, unrar-free, rar)
    * azerty equivalents to 1->0, help keys depends on affectation
    * bookmarks (F1->F12 ?) with list on screen
    * truncate log after N entries (10 000?) 
+   * message on screen while processing "p" & "n" commands
 
 Installation (Linux)
 --------------------
